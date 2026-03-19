@@ -1,0 +1,61 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  
+}
+
+// user - movie - watchlist
+
+model User {
+    id String @id @default(uuid())  // Changed to String with UUID default
+    name String
+    email String @unique
+    password String
+    createdAt DateTime @default(now())  
+    
+    movies Movie[] @relation("movieCreator")
+    watchlist WatchlistItem[]
+}
+
+model Movie {
+    id String @id @default(uuid())  // Changed to String with UUID default
+    title String
+    overview String?
+    genres String[] @default([])
+    runtime Int?
+    posterurl String? @default("https://via.placeholder.com/150")
+    releaseYear Int
+    createdAt DateTime @default(now())
+    createdBy String  // Now matches User.id (both are String)
+    
+    creator User @relation("movieCreator", fields: [createdBy], references: [id], onDelete: Cascade)
+    watchlist WatchlistItem[]
+} 
+
+model WatchlistItem {
+    id String @id @default(uuid())  // Changed to String with UUID default
+    status WatchlistItemStatus @default(PLANNED)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now())
+    notes String?
+    rating Int?
+    
+    movie Movie @relation(fields: [movieId], references: [id])
+    movieId String  // Changed to String
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId String  // Changed to String
+
+    @@unique([userId, movieId])
+}
+
+enum WatchlistItemStatus {
+    PLANNED
+    IN_PROGRESS
+    COMPLETED
+    ON_HOLD
+    DROPPED
+}
