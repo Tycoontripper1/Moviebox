@@ -1,14 +1,17 @@
 // prisma/schema.prisma
+
+
 generator client {
   provider = "prisma-client-js"
+    previewFeatures = ["driverAdapters"]
 }
+
 
 datasource db {
   provider = "postgresql"
-  
+  url      = env("DATABASE_URL")
 }
 
-// user - movie - watchlist
 
 model User {
     id String @id @default(uuid())  // Changed to String with UUID default
