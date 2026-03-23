@@ -140,3 +140,33 @@ export const deleteWatchlistItem = async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 };
+
+// @desc    Get watchlist stats
+// @route   GET /api/watchlist/stats
+// @access  Private
+export const getWatchlistStats = async (req, res) => {
+    try {
+        const userId = req.user.id;
+
+        const [total, watched, watching, wantToWatch, onHold, dropped] = await Promise.all([
+            prisma.watchlistItem.count({ where: { userId } }),
+            prisma.watchlistItem.count({ where: { userId, status: "COMPLETED" } }),
+            prisma.watchlistItem.count({ where: { userId, status: "IN_PROGRESS" } }),
+            prisma.watchlistItem.count({ where: { userId, status: "PLANNED" } }),
+            prisma.watchlistItem.count({ where: { userId, status: "ON_HOLD" } }),
+            prisma.watchlistItem.count({ where: { userId, status: "DROPPED" } }),
+        ]);
+
+        res.status(200).json({
+            total,
+            watched,
+            watching,
+            wantToWatch,
+            onHold,
+            dropped,
+        });
+    } catch (error) {
+        console.error("Error getting watchlist stats", error);
+        res.status(500).json({ message: "Server error" });
+    }
+};
