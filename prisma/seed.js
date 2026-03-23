@@ -20,6 +20,7 @@ const movies = [
     genres: ["Action", "Sci-Fi"],
     runtime: 136,
     posterurl: "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+    trailerUrl: "https://www.youtube.com/embed/vKQi3bBA1y8",
     createdBy: userId,
   },
   {
@@ -29,6 +30,7 @@ const movies = [
     genres: ["Action", "Sci-Fi", "Thriller"],
     runtime: 148,
     posterurl: "https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+    trailerUrl: "https://www.youtube.com/embed/YoHD9XEInc0",
     createdBy: userId,
   },
   {
@@ -38,6 +40,7 @@ const movies = [
     genres: ["Action", "Crime", "Drama"],
     runtime: 152,
     posterurl: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    trailerUrl: "https://www.youtube.com/embed/EXeTwQWrcwY",
     createdBy: userId,
   },
   {
@@ -47,6 +50,7 @@ const movies = [
     genres: ["Crime", "Drama"],
     runtime: 154,
     posterurl: "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
+    trailerUrl: "https://www.youtube.com/embed/s7EdQ4FqbhY",
     createdBy: userId,
   },
   {
@@ -56,6 +60,7 @@ const movies = [
     genres: ["Adventure", "Drama", "Sci-Fi"],
     runtime: 169,
     posterurl: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+    trailerUrl: "https://www.youtube.com/embed/zSWdZVtXT7E",
     createdBy: userId,
   },
   {
@@ -65,6 +70,7 @@ const movies = [
     genres: ["Drama"],
     runtime: 142,
     posterurl: "https://image.tmdb.org/t/p/w500/lyQBXzOQSuE59IsHyhrp0qIiPAz.jpg",
+    trailerUrl: "https://www.youtube.com/embed/6hB3S9bIaco",
     createdBy: userId,
   },
   {
@@ -74,6 +80,7 @@ const movies = [
     genres: ["Drama", "Thriller"],
     runtime: 139,
     posterurl: "https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
+    trailerUrl: "https://www.youtube.com/embed/qtRKdVHc-cE",
     createdBy: userId,
   },
   {
@@ -83,6 +90,7 @@ const movies = [
     genres: ["Drama", "Romance"],
     runtime: 142,
     posterurl: "https://image.tmdb.org/t/p/w500/saHP97rTPS5eLmrLQEcANmKrsFl.jpg",
+    trailerUrl: "https://www.youtube.com/embed/bLvqoHBptjg",
     createdBy: userId,
   },
   {
@@ -92,6 +100,7 @@ const movies = [
     genres: ["Crime", "Drama"],
     runtime: 175,
     posterurl: "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsLLeHCyOHKaE.jpg",
+    trailerUrl: "https://www.youtube.com/embed/sY1S34973zA",
     createdBy: userId,
   },
   {
@@ -101,6 +110,7 @@ const movies = [
     genres: ["Biography", "Crime", "Drama"],
     runtime: 146,
     posterurl: "https://image.tmdb.org/t/p/w500/aKuFiU82s5ISJpGZp7YkIr3kCUd.jpg",
+    trailerUrl: "https://www.youtube.com/embed/qo0oFLTgmkU",
     createdBy: userId,
   },
 ];
