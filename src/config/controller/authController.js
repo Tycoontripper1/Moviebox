@@ -144,12 +144,49 @@ export const getProfile = async (req, res) => {
                 name: true,
                 email: true,
                 createdAt: true,
+                avatar: true,
             },
         });
 
-        res.status(200).json(user);
+        res.status(200).json(
+            {
+                message: "Profile fetched successfully",
+                user
+            }
+        );
     } catch (error) {
         console.error("Get profile error:", error);
         res.status(500).json({ message: "Server error" });
     }
 };
+
+
+export const updateProfile = async (req, res) => {
+    try {
+        const { name } = req.body
+        const userId = req.user.id
+
+        const updatedUser = await prisma.user.update({
+            where: { id: userId },
+            data: {
+                name: name || undefined,
+                avatar: req.file?.path || undefined,
+            },
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                avatar: true,
+                createdAt: true,
+            }
+        })
+
+        res.status(200).json({
+            message: 'Profile updated successfully',
+            user: updatedUser
+        })
+    } catch (error) {
+        console.error('Update profile error:', error)
+        res.status(500).json({ message: 'Server error' })
+    }
+}
