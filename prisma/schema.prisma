@@ -21,25 +21,25 @@ model User {
     createdAt DateTime @default(now())  
     avatar String? @default("https://avatar.iran.liara.run/public/boy")
     
-    movies Movie[] @relation("movieCreator")
+    // movies Movie[] @relation("movieCreator")
     watchlist WatchlistItem[]
 }
 
-model Movie {
-    id String @id @default(uuid())  // Changed to String with UUID default
-    title String
-    overview String?
-    genres String[] @default([])
-    runtime Int?
-    posterurl String? @default("https://via.placeholder.com/150")
-    trailerUrl String?
-    releaseYear Int
-    createdAt DateTime @default(now())
-    createdBy String  // Now matches User.id (both are String)
+// model Movie {
+//     id String @id @default(uuid())  // Changed to String with UUID default
+//     title String
+//     overview String?
+//     genres String[] @default([])
+//     runtime Int?
+//     posterurl String? @default("https://via.placeholder.com/150")
+//     trailerUrl String?
+//     releaseYear Int
+//     createdAt DateTime @default(now())
+//     createdBy String  // Now matches User.id (both are String)
     
-    creator User @relation("movieCreator", fields: [createdBy], references: [id], onDelete: Cascade)
-    watchlist WatchlistItem[]
-} 
+//     creator User @relation("movieCreator", fields: [createdBy], references: [id], onDelete: Cascade)
+//     watchlist WatchlistItem[]
+// } 
 
 model WatchlistItem {
     id String @id @default(uuid())  // Changed to String with UUID default
@@ -48,9 +48,14 @@ model WatchlistItem {
     updatedAt DateTime @default(now())
     notes String?
     rating Int?
+
+
+    movieId Int
+    title String
+    posterurl String?
     
-    movie Movie @relation(fields: [movieId], references: [id])
-    movieId String  // Changed to String
+    // movie Movie @relation(fields: [movieId], references: [id])
+    // movieId String  // Changed to String
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId String  // Changed to String
 

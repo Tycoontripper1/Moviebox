@@ -20,10 +20,12 @@ app.use(express.urlencoded({ extended: true }));
 import movieRoutes from "./routes/movieRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import watchlistRoutes from "./routes/watchlistRoutes.js";
+import tmdbRoutes from "./routes/tmdbRoutes.js";
 
 app.use("/api/movies", movieRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/watchlist", watchlistRoutes);
+app.use("/api/tmdb", tmdbRoutes);
 
 
 app.use((err, req, res, next) => {
